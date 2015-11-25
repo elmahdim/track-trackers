@@ -1,0 +1,129 @@
+@import 'compass';
+
+$color-primary: #00aee8 !default;
+
+$bg-body  : #fafafa !default;
+$bg-header: $color-primary !default;
+
+$gutter: 15px !default;
+
+$nav-border-size: 3px !default;
+$nav-border-color: #EE3182 !default;
+
+%ba {
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    position: absolute; 
+  }
+}
+* {
+ @include box-sizing(border-box);
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $bg-body;
+  font: 400 12px/100% 'Roboto', sans-serif;
+}
+
+.container {
+  max-width: 300px;
+  min-height: 100px;
+  margin: 80px auto;
+  background-color: #fff;
+}
+.header {
+  background-color: $bg-header;
+  color: #fff;
+  padding: ($gutter * 2) $gutter 0 $gutter;
+  ul {
+    li {
+      display: inline-block;
+      margin-right: 5px;
+      border-bottom: $nav-border-size solid transparent;
+      padding-bottom: $gutter;
+      margin-bottom: -$nav-border-size;
+      cursor: pointer;
+      &.is-active {
+        border-bottom-color: $nav-border-color;
+      }
+    }
+  }
+}
+
+.wrapper {
+  padding: ($gutter * 2) $gutter;
+  h2 {
+    font-size: 24px;
+    font-weight: 300;
+    margin: 0 0 $gutter + 5;
+  }
+  .list {
+    li {
+      border-top: 1px solid rgba(0,0,0,.1);
+      display: block;
+      padding: $gutter 0 $gutter $gutter;
+      position: relative;
+      span {
+        font-weight: 500;
+        @extend %ba;
+        &:before {
+          width: 8px;
+          height: 8px;
+          @include border-radius(50%);
+          left: 0;
+          top: 50%;
+          margin-top: -4px;
+        }
+      }
+      label {
+        float: right;
+        width: 36px;
+        height: 14px;
+        background-color: #bdbdbd;
+        position: relative;
+        cursor: pointer;
+        @include border-radius(30px);
+        input { @include transparent; }
+        @extend %ba;
+        &:before {
+          background-color: #f5f5f5;
+          @include box-shadow(0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24));
+          @include border-radius(50%);
+          top: -3px;
+          left: -1px;
+          width: 20px;
+          height: 20px;
+        }
+        &.is-active {
+          background: rgba($color-primary, .4);
+          &:before {
+            background-color: $color-primary;
+            left: auto;
+            right: -1px;
+          }
+        }
+      }
+      &.is-busy {
+        span {
+          &:before {
+            background-color: #F66459;
+          }
+        }
+      }
+      &.is-available {
+        span {
+          &:before {
+            background-color: #F66459;
+          }
+        }
+      }
+    }
+  }
+}
