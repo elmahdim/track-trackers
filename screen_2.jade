@@ -1,0 +1,15 @@
+// <link href='https://fonts.googleapis.com/css?family=Roboto:500,400,300' rel='stylesheet' type='text/css'>
+.container
+  header.header
+    nav
+      ul
+        each tabs, i in ["All trackers", "Upwork/oDesk", "Elance", "TimeDoctor"]
+          li(class=(i===0 ? 'is-active' : ''))= tabs
+  .wrapper
+    h2 All trackers
+    ul.list
+      each trackers in ["username", "tracker_id", "oneMore", "another"]
+          li
+            span= trackers
+            label
+              input(type="checkbox", value= trackers)
